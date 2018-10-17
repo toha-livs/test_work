@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TABLE FILTER</title>
+    <style>
+        body {
+            font-family: "Helvetica";
+            font-size: medium;
+        }
+        table {
+            border-collapse: collapse;
+            text-align: center;
+            margin: auto;
+        }
+        table td, table th {
+            border: solid 1px #aaa;
+            padding: 10px;
+        }
+        table tbody tr:nth-child(2n) {
+            background: #a8d7ff;
+        }
+        table tbody tr:hover {
+            background: #fffcb6;
+        }
+    </style>
+</head>
+<body>
+
+
+
+<table>
+    <thead>
+    <tr>
+        <th>Символы</th>
+        <th>Текст</th>
+        <th>Цифры</th>
+        <th>Цифры</th>
+        <th>Текст</th>
+    </tr>
+    <tr>
+        <td>
+            <input type="checkbox" id="charA" value="A" />A
+            <input type="checkbox" id="charB" value="B" />B
+            <input type="checkbox" id="charC" value="C" />C
+        </td>
+        <td>
+            <input id="text" />
+        </td>
+        <td>
+            <select id="digits">
+                <option value="">---</option>
+                <option value="Г56">Г56</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+        </td>
+        <td>
+            <input type="radio" name="digit" id="radioZ" value="" checked="true" />-
+            <input type="radio" name="digit" id="radioA" value="1" />1
+            <input type="radio" name="digit" id="radioB" value="2" />2
+            <input type="radio" name="digit" id="radioC" value="3" />3
+        </td>
+        <td>
+            <input id="regexp" />
+        </td>
+    </tr>
+    </thead>
+    <tbody id="target">
+    <tr>
+        <td>B</td><td>Арбуз</td><td>Г56</td><td>3</td><td>Фанат</td>
+    </tr>
+    <tr>
+        <td>B</td><td>Стрелок</td><td>1</td><td>2</td><td>Арба</td>
+    </tr>
+    <tr>
+        <td>C</td><td>Фанат</td><td>3</td><td>1</td><td>Стрелок</td>
+    </tr>
+    <tr>
+        <td>C</td><td>Стрелок</td><td>2</td><td>1</td><td>Фантомас</td>
+    </tr>
+    <tr>
+        <td>B</td><td>Стрелок</td><td>1</td><td>2</td><td>Арбуз</td>
+    </tr>
+    <tr>
+        <td>C</td><td>Фанат</td><td>3</td><td>3</td><td>Стрелок</td>
+    </tr>
+    <tr>
+        <td>A</td><td>Арбуз</td><td>2</td><td>2</td><td>Арбуз</td>
+    </tr>
+    <tr>
+        <td>A</td><td>Фанат</td><td>1</td><td>1</td><td>Стрелочник</td>
+    </tr>
+    <tr>
+        <td>C</td><td>Фанат</td><td>3</td><td>3</td><td>Арбуз</td>
+    </tr>
+    <tr>
+        <td>B</td><td>Фанат</td><td>2</td><td>3</td><td>Фантик</td>
+    </tr>
+    <tr>
+        <td>C</td><td>Стрелок</td><td>1</td><td>1</td><td>Арбуз</td>
+    </tr>
+    <tr>
+        <td>C</td><td>Фанат</td><td>3</td><td>2</td><td>Стрелка</td>
+    </tr>
+    </tbody>
+</table>
+
+<script src="test.js"></script>
+<script>
+    filterTable( document.getElementById("target"), {
+            /* Фильтр для третьего столбца выпадающий список: */
+            2: document.getElementById("digits")
+        }
+    );
+</script>
+
+</body>
+</html>
